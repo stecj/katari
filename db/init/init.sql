@@ -1,0 +1,18 @@
+-- Crear tabla de empresas
+CREATE TABLE IF NOT EXISTS companies (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    subdomain VARCHAR(100) UNIQUE NOT NULL
+);
+
+-- Crear tabla de usuarios
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
+    dni VARCHAR(20) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    company_id INTEGER NOT NULL,
+    FOREIGN KEY (company_id) REFERENCES companies(id) ON DELETE CASCADE
+);
